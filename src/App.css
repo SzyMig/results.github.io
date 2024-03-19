@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+p {
+  font-family: "Input-sans";
+  color: black;
+}
+
+.image-canvas {
+
+  position: relative;
+  text-align: left;
+}
+
+.image-canvas img {
+  width: 100%;
+  height: auto;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+label {
+  margin-bottom: 1em;
+}
+
+h1 {
+  padding-bottom: 2rem;
+}
+
+.coin-name {
+  position: absolute;
+  top: 52%;
+  left: 38%;
+  color: black;
+}
+
+.total-profit {
+  position: absolute;
+  top: 61.7%;
+  left: 52%;
+  color: black;
+}
+
+.sol-val {
+  position: absolute;
+  top: 68%;
+  left: 52%;
+  color: black;
+}
+
+.roi {
+  position: absolute;
+  top: 73.5%;
+  left: 41%;
+  color: black;
+}
+
+.initial {
+  position: absolute;
+  top: 82.5%;
+  left: 45%;
+  color: black;
+}
