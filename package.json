@@ -2,7 +2,7 @@
   "name": "resultspage",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://szymig.github.io/results.github.io/",
+  "homepage": "http://szymig.github.io/results/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
