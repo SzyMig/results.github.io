@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import reactLogo from './assets/react.svg';
+import viteLogo from './assets/vite.svg'; 
+
+// ... rest of your code ...
+
 import './App.css'
-import template from './assets/template.png'
+import template from './assets/newtemplate.png'
 
 function App() {
   const [coinName, setCoinName] = useState('')
@@ -24,22 +27,27 @@ function App() {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       const image = imageRef.current;
-
+      let totalProf2 = Number(totalProf).toLocaleString("en-US", {style:"currency", currency:"USD", minimumFractionDigits: 0, maximumFractionDigits: 2});
+      let solVal2 = Number(solanaPrice);
+      let totalSol = totalProf / solVal2;
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
 
       ctx.drawImage(image, 0, 0);
 
       ctx.fillStyle = 'black';
-      ctx.font = '900 80px "input-sans", sans-serif';
+      ctx.font = '900 120px "input-sans", sans-serif';
 
-      ctx.fillText(`${coinName}`, image.naturalWidth * 0.38, image.naturalHeight * 0.525);
-      ctx.fillText(`$${totalProf}`, image.naturalWidth * 0.52, image.naturalHeight * 0.629);
-      ctx.fillText(`${solVal}`, image.naturalWidth * 0.51, image.naturalHeight * 0.695);
+      ctx.fillText(`${coinName}`, image.naturalWidth * 0.38, image.naturalHeight * 0.534);
+      ctx.font = '800 80px "input-sans", sans-serif'; // Increase font size to 40px
+      ctx.fillStyle = 'green'
+      ctx.fillText(`${totalProf2}`, image.naturalWidth * 0.51, image.naturalHeight * 0.629);
+      ctx.fillStyle = 'black';
+      ctx.fillText(`${totalSol.toFixed(2)}`, image.naturalWidth * 0.515, image.naturalHeight * 0.69);
       ctx.fillText(`${roi}`, image.naturalWidth * 0.41, image.naturalHeight * 0.753);
-      ctx.fillText(`$${initial}`, image.naturalWidth * 0.45, image.naturalHeight * 0.846);
+      ctx.fillText(`$${initial}`, image.naturalWidth * 0.45, image.naturalHeight * 0.848);
       ctx.font = '800 50px "input-sans", sans-serif'; // Increase font size to 40px
-      ctx.fillText(`$${solanaPrice.toFixed(2)}`, image.naturalWidth * 0.53, image.naturalHeight * 0.948);
+      ctx.fillText(`$${solVal2.toFixed(2)}`, image.naturalWidth * 0.445, image.naturalHeight * 0.948);
     }
   };
 
@@ -96,7 +104,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>$PT inc.</h1>
+      <h1 className=''>$PT inc.</h1>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Change parameters:</h2>
@@ -107,16 +115,13 @@ function App() {
           </label>
           <label className="input input-bordered flex items-center gap-2">
             Total profit (in $USD):
-            <input type="text" className="grow" placeholder="$1M" onChange={handleTotalProfChange} />
+            <input type="text" className="grow" placeholder="$1M"  onChange={handleTotalProfChange} />
           </label>
           <label className="input input-bordered flex items-center gap-2">
             Initial investment (in $USD):
             <input type="text" className="grow" placeholder="Initial" onChange={handleInitialChange} />
           </label>
-          <label className="input input-bordered flex items-center gap-2">
-            Sol total (in solana) {}
-            <input type="text" className="grow" placeholder="SolValue" onChange={handleSolValChange} />
-          </label>
+
           <button className="btn" onClick={downloadImage}>Download Image</button>
         </div>
       </div>
